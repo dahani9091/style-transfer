@@ -59,7 +59,7 @@ if __name__ == '__main__':
         input_image = image_file
         st.image(input_image, width=500) # image: numpy array
         ## output path
-        output_image ='/tmp/'+style_name+'.jpg' 
+        output_image ='/tmp/'+'out'+'.jpg' 
 
         # start precess
         clicked = st.button('Stylize')
