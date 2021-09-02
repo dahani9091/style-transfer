@@ -67,5 +67,6 @@ if __name__ == '__main__':
             st.subheader("Output image: ")
             image = Image.open(output_image)
             st.image(image, width=500)
+            #
 
 
