@@ -8,7 +8,7 @@ from PIL import Image
 import os
 
 
-def evaluate(content_image,style_image,output_image,model='models/21styles.params',style_size=1024,content_size=1024,cuda=0):
+def evaluate(content_image,style_image,output_image,model='models/21styles.params',style_size=800,content_size=800,cuda=0):
     if cuda:
         ctx = mx.gpu(0)
     else:
