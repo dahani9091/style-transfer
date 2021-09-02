@@ -67,7 +67,7 @@ if __name__ == '__main__':
             evaluate(input_image,style_image_path,output_image)
             st.subheader("Output image: ")
             image = Image.open(output_image)
-            st.image(image, width=800)
+            st.image(image, width=1204)
 
 
 
