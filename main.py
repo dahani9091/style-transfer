@@ -8,7 +8,7 @@ from PIL import Image
 import os
 
 
-def evaluate(content_image,style_image,output_image,model='models/21styles.params',style_size=600,content_size=600,cuda=0):
+def evaluate(content_image,style_image,output_image,model='models/21styles.params',style_size=512,content_size=512,cuda=0):
     if cuda:
         ctx = mx.gpu(0)
     else:
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     if image_file != None :
         # show input image
         input_image = image_file
-        st.image(input_image, width=700) # image: numpy array
+        st.image(input_image, width=500) # image: numpy array
         ## output path
         output_image ='/tmp/'+'out'+'.jpg' 
 
@@ -71,7 +71,7 @@ if __name__ == '__main__':
             evaluate(input_image,style_image_path,output_image)
             st.subheader("Output image: ")
             image = Image.open(output_image)
-            st.image(image, width=500)
+            st.image(image, width=700)
 
 
 
