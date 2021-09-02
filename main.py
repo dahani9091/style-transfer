@@ -1,4 +1,3 @@
-
 import mxnet as mx
 import numpy as np
 import net
@@ -41,7 +40,7 @@ if __name__ == '__main__':
     style_image_path  = os.path.join(os.getcwd(),'images','styles',style_name+'.jpg')
     st.subheader("Style image :")
     style_image = Image.open(style_image_path)
-    st.image(style_image, width=600) # image: numpy array
+    st.image(style_image, width=500) # image: numpy array
 
 
     ## get input image and show it
@@ -52,10 +51,10 @@ if __name__ == '__main__':
     # show input image
     if input_image!=None :
         image = Image.open(input_image)
-        st.image(image, width=600) # image: numpy array
+        st.image(image, width=500) # image: numpy array
         print(str(input_image))
         ## output path
-        output_image = '/tmp/'+style_name+'.jpg' 
+        output_image = '/tmp/',style_name+'.jpg' 
     
         # start precess
         clicked = st.button('Stylize')
@@ -67,7 +66,6 @@ if __name__ == '__main__':
             evaluate(input_image,style_image_path,output_image)
             st.subheader("Output image: ")
             image = Image.open(output_image)
-            st.image(image, width=600)
-
+            st.image(image, width=500)
 
 
