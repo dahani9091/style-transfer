@@ -6,10 +6,14 @@ from PIL import Image
 import numpy as np
 import mxnet as mx
 import mxnet.ndarray as F
+import streamlit as st
 
+@st.cache
+def load(fn):
+    return Image.open(fn).convert('RGB')
 
 def tensor_load_rgbimage(filename, ctx, size=None, scale=None, keep_asp=False):
-    img = Image.open(filename).convert('RGB')
+    img = load(filename)
     if size is not None:
         if keep_asp:
             size2 = int(size * 1.0 / img.size[0] * img.size[1])
