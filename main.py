@@ -57,7 +57,7 @@ if __name__ == '__main__':
     if image_file != None :
         # show input image
         input_image = image_file
-        st.image(input_image, width=500) # image: numpy array
+        st.image(input_image, width=700) # image: numpy array
         ## output path
         output_image ='/tmp/'+'out'+'.jpg' 
 
