@@ -1,3 +1,4 @@
+
 import mxnet as mx
 import numpy as np
 import net
@@ -18,11 +19,14 @@ def evaluate(content_image,style_image,output_image,model='models/21styles.param
     style_image = utils.preprocess_batch(style_image)
     # model
     style_model = net.Net(ngf=128)
-    style_model.load_params(model, ctx=ctx)
+    style_model.load_parameters(model, ctx=ctx)
     # forward
     style_model.set_target(style_image)
     output = style_model(content_image)
     utils.tensor_save_bgrimage(output[0], output_image, cuda)
+
+
+
 
 if __name__ == '__main__':
     st.set_page_config(page_title='IA ART', page_icon = 'pencil.jpg', layout = 'wide', initial_sidebar_state = 'auto')
@@ -36,6 +40,8 @@ if __name__ == '__main__':
 
     ### Body ##############
 
+    
+
     # show style image
     style_image_path  = os.path.join(os.getcwd(),'images','styles',style_name+'.jpg')
     st.subheader("Style image :")
@@ -45,30 +51,27 @@ if __name__ == '__main__':
 
     ## get input image and show it
     st.subheader("Origin image :")
-    input_image_file = st.file_uploader("Upload your Image",type=['png','jpeg','jpg'])
-    input_image = input_image_file
+    #input_image_file = st.file_uploader("Upload your Image",type=['png','jpeg','jpg'])
+    image_file = st.file_uploader("Upload Image",type=['png','jpeg','jpg'])
     
-    # show input image
-    if input_image!=None :
-        image = Image.open(input_image)
-        st.image(image, width=600) # image: numpy array
-        print(str(input_image))
+    if image_file != None :
+        # show input image
+        input_image = image_file
+        st.image(input_image, width=500) # image: numpy array
         ## output path
-        if os.path.exists('/tmp/'+'out'+'.jpg'):
-            os.remove('/tmp/'+'out'+'.jpg')
-        output_image = '/tmp/'+'out'+'.jpg' 
-    
+        output_image ='/tmp/'+style_name+'.jpg' 
+
         # start precess
         clicked = st.button('Stylize')
 
         if clicked:
             #model = style.load_model(model)
-            
+
             #style.stylize(model, input_image, output_image)
             evaluate(input_image,style_image_path,output_image)
             st.subheader("Output image: ")
             image = Image.open(output_image)
-            st.image(image, width=600)
-            #
+            st.image(image, width=500)
+
 
 
