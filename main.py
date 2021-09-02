@@ -54,6 +54,8 @@ if __name__ == '__main__':
         st.image(image, width=500) # image: numpy array
         print(str(input_image))
         ## output path
+        if os.path.exists('/tmp/'+'out'+'.jpg'):
+            os.remove('/tmp/'+'out'+'.jpg')
         output_image = '/tmp/'+'out'+'.jpg' 
     
         # start precess
